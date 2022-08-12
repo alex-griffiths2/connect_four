@@ -35,6 +35,10 @@ def winning_move(player):
             if board[row,col] == board[row+1,col] and board[row,col] == board[row+2,col] and board[row,col] == board[row+1,col] and board[row,col] == player:
                 return "Player {player_name} wins!!".format(player_name=player)
 
+for i in row_:
+    fefsef
+
+
     # Check for positive slope of 4 winning move
     for row in range(0,4):
         for col in range(4,len(board[row])):    
@@ -47,13 +51,11 @@ def winning_move(player):
             if board[row,col] == board[row+1,col+1] and board[row,col] == board[row+2,col+2] and board[row,col] == board[row+3,col+3] and board[row,col] == player:
                 return "Player {player_name} wins!!".format(player_name=player)
 
-    
-print(winning_move(player_1))
-# def token_drop(player,board,selection):
-#     for row in len(ROW_COUNT):
-#         # If the slot is empty and the next slot is taken (not equal to zero), then place the token here (equal to the players' number)
-#         if board[selection,row] == 0 and board[selection,(row+1)] != 0
-#             board[selection,row] == player
+def token_drop(player,board,selection):
+    for row in len(ROW_COUNT):
+        # If the slot is empty and the next slot is taken (not equal to zero), then place the token here (equal to the players' number)
+        if board[selection,row] == 0 and board[selection,(row+1)] != 0
+            board[selection,row] == player
 
 
 # def valid_move(selection):
