@@ -1,6 +1,4 @@
-from distutils.log import error
 import numpy
-
 
 # Define global params for number of rows and columns in the matrix
 ROW_COUNT = 7
@@ -27,29 +25,25 @@ def winning_move(player):
     for row in range(len(board)):
         for col in range(len(board[row])-3):
             if board[row,col] == board[row,col+1] and board[row,col] == board[row,col+2] and board[row,col] == board[row,col+3] and board[row,col] == player:
-                return "Player {player_name} wins!!".format(player_name=player)
+                return True
     
     # Check for vertical row of 4 winning move
     for row in range(len(board)-3):
         for col in range(len(board[row])):
             if board[row,col] == board[row+1,col] and board[row,col] == board[row+2,col] and board[row,col] == board[row+1,col] and board[row,col] == player:
-                return "Player {player_name} wins!!".format(player_name=player)
-
-for i in row_:
-    fefsef
-
+                return True
 
     # Check for positive slope of 4 winning move
     for row in range(0,4):
         for col in range(4,len(board[row])):    
             if board[row,col] == board[row+1,col-1] and board[row,col] == board[row+2,col-2] and board[row,col] == board[row+3,col-3] and board[row,col] == player:
-                return "Player {player_name} wins!!".format(player_name=player)
+                return True
 
     # Check for negative slope of 4 winning move
     for row in range(0,4):
         for col in range(0,4):    
             if board[row,col] == board[row+1,col+1] and board[row,col] == board[row+2,col+2] and board[row,col] == board[row+3,col+3] and board[row,col] == player:
-                return "Player {player_name} wins!!".format(player_name=player)
+                return True
 
 def token_drop(player,board,selection):
     for row in len(ROW_COUNT):
@@ -57,24 +51,44 @@ def token_drop(player,board,selection):
         if board[selection,row] == 0 and board[selection,(row+1)] != 0
             board[selection,row] == player
 
+# Check if the player has selected a valid move
+def valid_move(selection):
+    if board[selection,0] == 0 and selection > 0 and selection < 7:
+        return True
+    else
+        return False
 
-# def valid_move(selection):
-#     if board[selection,0] == 0:
-#         return True
-#     else
-#         return False
+# Playing the game
+while not winning_move == True:
+    # define player 1's turn
+    if turn%2 == 0:     
+        selection = int(input("Player 1, please select a column to place your token"))
+        
+        # Keep asking for user input if they make incorrect selections
+        while valid_move(selection) == False:
+            print("Invalid move, please try again")
+            selection = int(input("Player 1, please select a column to place your token"))
+        
+        token_drop(player_1,board,selection)
+        winning_move(player_1)
+        print(board)
+        turn += 1
+    
+    elif not turn%2 == 0:
+        selection = int(input("Player 2, please select a column to place your token"))
+        
+        # Keep asking for user input if they make incorrect selections
+        while valid_move(selection) == False:
+            print("Invalid move, please try again")
+            selection = int(input("Player 2, please select a column to place your token"))
+        
+        token_drop(player_2,board,selection) 
+        winning_move(player_2)
+        print(board)
+        turn += 1
 
-# while not game_over:
-#     if turn % 2 == 0:
-#         selection = int(input("Player 1, please make your selection"))
-#         player = 1
-#         turn += 1
-#         place_token(selection)
-#     else:
-#         selection = int(input("Player 2, please make your selection"))
-#         pLayer = 2
-#         turn += 1
-#         place_token(selection)
+
+
 
 
 
